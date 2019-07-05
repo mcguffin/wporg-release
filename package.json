@@ -1,9 +1,9 @@
 {
   "name": "wporg-release",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "Release WP plugins and themes to wporg",
   "private": true,
-  "main":"main.js",
+  "main": "main.js",
   "scripts": {
     "dev": "gulp dev",
     "build": "gulp build && npm run i18n",
@@ -26,9 +26,8 @@
     "url": "https://github.com/mcguffin/acf-dropzone/issues"
   },
   "homepage": "https://github.com/mcguffin/acf-dropzone#readme",
-  "devDependencies": {
-  },
+  "devDependencies": {},
   "dependencies": {
-      "simple-git": "^1.118.0"
+    "simple-git": "^1.118.0"
   }
 }
