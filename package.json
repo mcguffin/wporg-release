@@ -1,11 +1,11 @@
 {
   "name": "wporg-release",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Release WP plugins and themes to wporg",
   "private": true,
   "main": "main.js",
   "scripts": {
-    "postversion":"git push && git push --tags",
+    "postversion": "git push && git push --tags",
     "rollback": "git reset --hard HEAD~ && git push origin +master"
   },
   "repository": {
