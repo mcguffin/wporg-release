@@ -5,13 +5,21 @@ const [ , , ...args ] = process.argv;
 const identifier =  ['major','minor','patch'].indexOf( args[ args.length - 1 ]) !== -1
 	? args[ args.length - 1 ]
 	: 'patch';
-console.log(process.cwd())
-console.log( 'dry' in args );
-const dry = args.indexOf('dry') !== -1;
-process.exit();
 
+const dry = args.indexOf('dry') !== -1;
+
+/*
+wp-release
+	wp-release patch
+wp-release setup
+	Setup
+*/
 
 (async () => {
+	if ( args.indexOf('setup') !== -1 ) {
+		console.log('## BUILD ##')
+		await release.setup( identifier )
+	}
 	if ( args.indexOf('build') !== -1 ) {
 		console.log('## BUILD ##')
 		await release.build( identifier )
