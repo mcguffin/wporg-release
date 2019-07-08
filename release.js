@@ -1,3 +1,4 @@
+#!/usr/bin/env node
 const release = require('./lib/release/index.js');
 
 const identifier =  ['major','minor','patch'].indexOf(process.argv[ process.argv.length - 1 ]) !== -1
@@ -5,6 +6,8 @@ const identifier =  ['major','minor','patch'].indexOf(process.argv[ process.argv
 	: 'patch';
 
 const dry = process.argv.indexOf('dry') !== -1;
+process.exit();
+
 
 (async () => {
 	if ( process.argv.indexOf('build') !== -1 ) {
