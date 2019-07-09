@@ -3,7 +3,6 @@ const release = require('./lib/release/index.js');
 const [ , , ...args ] = process.argv;
 const dry = args.indexOf('dry') !== -1;
 
-
 const usage = `Usage \`wp-release [options]\`
 
 Options can be:

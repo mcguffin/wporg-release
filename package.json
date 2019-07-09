@@ -23,8 +23,10 @@
   "homepage": "https://github.com/mcguffin/acf-dropzone#readme",
   "devDependencies": {},
   "dependencies": {
+    "child_process": "^1.0.2",
     "glob": "^7.1.4",
     "prompts": "^2.1.0",
+    "semver": "^6.2.0",
     "simple-git": "^1.118.0"
   }
 }
