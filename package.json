@@ -3,7 +3,7 @@
   "version": "0.0.6",
   "description": "Release WP plugins and themes to wporg",
   "private": false,
-  "main": "main.js",
+  "main": "release.js",
   "bin": {
     "wp-release": "./release.js"
   },
@@ -23,7 +23,7 @@
   "homepage": "https://github.com/mcguffin/acf-dropzone#readme",
   "devDependencies": {},
   "dependencies": {
-    "prompt": "^1.0.0",
+    "prompts": "^2.1.0",
     "simple-git": "^1.118.0"
   }
 }
