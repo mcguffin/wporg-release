@@ -1,6 +1,6 @@
 {
   "name": "wporg-release",
-  "version": "0.0.9",
+  "version": "0.0.10",
   "description": "Release WP plugins and themes to wporg",
   "private": false,
   "main": "release.js",
