@@ -38,7 +38,11 @@ $ wporg-release wporg assets // push new assets to wporg
 
 	const do_step = async step => {
 		console.log( `# Running: ${step}` );
-		await release[step]( dry );
+        
+		await release[step]( dry ).catch( error => {
+            console.log(error)
+            process.exit(1)
+        });
 	}
 
 	// show some help
@@ -60,7 +64,8 @@ $ wporg-release wporg assets // push new assets to wporg
 	['build','github','git','wporg','pack'].forEach( step => {
 		if ( args.indexOf( step ) !== -1 ) {
 			has_step_args = true;
-			do_step( step, args );
+
+			do_step( step );
 		}
 	} );
 	if ( ! has_step_args ) {
