@@ -38,7 +38,7 @@ $ wporg-release wporg assets // push new assets to wporg
 
 	const do_step = async step => {
 		console.log( `# Running: ${step}` );
-        
+
 		await release[step]( dry ).catch( error => {
             console.log(error)
             process.exit(1)
@@ -57,7 +57,7 @@ $ wporg-release wporg assets // push new assets to wporg
 		process.exit(0)
 	}
 	if ( ! package.wporg ) {
-		console.log( 'wporg release not configured! run `wp-release setup` first' )
+		console.log( 'wporg release not configured. Please run `wp-release setup` first' )
 		process.exit(1)
 	}
 
