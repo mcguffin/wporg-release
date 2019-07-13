@@ -1,5 +1,9 @@
 #!/usr/bin/env node
+const colors =require('colors');
 const release = require('./lib/release/index.js');
+const setup = require('./lib/setup.js');
+const { erase, cursor } = require('sisteransi');
+
 const [ , , ...args ] = process.argv;
 const dry = args.indexOf('dry') !== -1;
 
@@ -9,12 +13,12 @@ Options can be:
  - setup: Run configuration wizard
 
 Or one of:
- - Version identifiers: patch|minor|major
- - Mode: dry (Don't do anything on remotes)
- - wporg-Options: assets|source releae either only assets or only sourcecode (default: none)
+ - version identifier: patch|minor|major
+ - Mode flag: dry (Don't do anything on remotes)
+ - wporg-option: assets|source either release only assets or only sourcecode (default: none)
 
 Or any of
- - Release steps: build|git|github|wporg|pack (Default: wporg.steps in package.json)
+ - Release step: build|git|github|wporg|pack (Default: wporg.steps in package.json)
 
 
 Examples:
@@ -26,50 +30,52 @@ $ wporg-release wporg assets // push new assets to wporg
 
 `;
 
-
-
 /*
 
 */
 
 (async () => {
 	const package = require( process.cwd() + '/package.json' );
+	const steps = ['build','github','git','wporg','pack']
 	let has_step_args = false;
+	let dry = args.indexOf('dry') !== -1;
 
-	const do_step = async step => {
-		console.log( `# Running: ${step}` );
-
-		await release[step]( dry ).catch( error => {
-            console.log(error)
-            process.exit(1)
-        });
+	const run_steps = async (...steps) => {
+		let i, step;
+		for ( i=0;i<steps.length;i++) {
+			step = steps[i];
+			console.log( `Step: ${step}`.white.bold );
+			try {
+				await release[step].run( dry );
+			} catch (error) {
+				throw( error );
+				console.log('ERROR'.red)
+//				!!error && console.log(error.red)
+				process.exit(1)
+			}
+		}
 	}
 
 	// show some help
-	if ( !args.length || args.indexOf('?') !== -1 ) {
+	if ( ! args.length || args.indexOf('?') !== -1 ) {
 		console.log( usage )
 		process.exit(0)
 	}
 
 
 	if ( args.indexOf('setup') !== -1 ) {
-		await release.setup()
+		await setup()
 		process.exit(0)
 	}
 	if ( ! package.wporg ) {
-		console.log( 'wporg release not configured. Please run `wp-release setup` first' )
+		console.log( 'wporg release not configured. Please run `wp-release setup` first'.red )
 		process.exit(1)
 	}
-
-	['build','github','git','wporg','pack'].forEach( step => {
-		if ( args.indexOf( step ) !== -1 ) {
-			has_step_args = true;
-
-			do_step( step );
-		}
-	} );
-	if ( ! has_step_args ) {
-		package.wporg.steps.forEach( do_step );
+	let stepargs = steps.filter( step => args.indexOf( step ) !== -1 )
+	if ( stepargs.length ) {
+		run_steps( ...stepargs )
+	} else {
+		run_steps( ...package.wporg.steps )
 	}
 	//
 	// if ( args.indexOf('build') !== -1 ) {
