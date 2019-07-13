@@ -20,7 +20,8 @@ npm install -g github:mcguffin/wp-release
 #### Wordpress.org
  - An account at WordPress.org. [Create one](https://login.wordpress.org/register)
  - For Plugin-releases: Access to the wordpress plugin repository.
- - On macOS: SVN credentials stored in Keychain. [This might help](https://top-frog.com/2009/03/30/mac-os-x-subversion-and-keychain/)
+ - On macOS: SVN credentials stored in Keychain. [This article might help](https://top-frog.com/2009/03/30/mac-os-x-subversion-and-keychain/)
+ - The only way to relese a Theme-Update is by using a carbon based system (you) under [this url](https://wordpress.org/themes/upload/).
 
 ## The Setup
 Run the configuration wizard
