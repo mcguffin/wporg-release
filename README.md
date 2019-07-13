@@ -1,17 +1,21 @@
-# wporg-release
+# wp-release
 Release scripts for wordpress.org
 
 ## Install
 
 ```
-npm install -g github:mcguffin/wporg-release
+npm install -g github:mcguffin/wp-release
 ```
 
 ## Setup
 ### Preconditions
 #### Git
- - Required for Git: SSH-Access to your Git-Repositories. Help: [Github](https://help.github.com/en/articles/connecting-to-github-with-ssh), [Bitbucket](https://confluence.atlassian.com/bitbucketserver/ssh-access-keys-for-system-use-776639781.html)
- - For github: an Access Token with `repo`-Scope enabled. [Create one](https://github.com/settings/tokens/new)
+ - Required for Git: SSH-Access to your Git-Repositories.  
+ Vulgo: Your repo remote must be something like `git@some-host:some-user/some-repo.git`  
+ More help: [Github](https://help.github.com/en/articles/connecting-to-github-with-ssh), [Bitbucket](https://confluence.atlassian.com/bitbucketserver/ssh-access-keys-for-system-use-776639781.html)
+
+### Guthub
+ - an Access Token with `repo`-Scope enabled. [Create one](https://github.com/settings/tokens/new)
 
 #### Wordpress.org
  - An account at WordPress.org. [Create one](https://login.wordpress.org/register)
@@ -21,7 +25,7 @@ npm install -g github:mcguffin/wporg-release
 ## The Setup
 Run the configuration wizard
 ```bash
-wporg-release setup
+wp-release setup
 ```
 
 ## Usage
@@ -29,7 +33,7 @@ wporg-release setup
 
 ```
 $ wp-release
-Usage \`wp-release [options]\`
+Usage `wp-release [options]`
 
 Options can be:
  - setup: Run configuration wizard
@@ -47,35 +51,35 @@ Or any of
 
 Create and distrubute a patch update.
 ```bash
-$ wporg-release patch
+$ wp-release patch
 ```
 
 Create a minor update, but don't release it to any remote yet.
 ```bash
-$ wporg-release build minor // Create a package zip to be submitted to wporg.
+$ wp-release build minor // Create a package zip to be submitted to wporg.
 ```
 
 Release current version to github and wporg.  
 ```bash
-$ wporg-release github wporg // Create a package zip to be submitted to wporg.
+$ wp-release github wporg // Create a package zip to be submitted to wporg.
 ```
 
 Create a package zip submittable to wporg. (Will be created on level above your project root)
 ```bash
-$ wporg-release pack
+$ wp-release pack
 ```
 
 
 ```bash
-$ wporg-release minor dry // build minor update and simulate the releasing
+$ wp-release minor dry // build minor update and simulate the releasing
 ```
 
 Publish updated assets on wporg
 ```bash
-$ wporg-release wporg assets
+$ wp-release wporg assets
 ```
 
 Publish updated source on wporg
 ```bash
-$ wporg-release wporg source // publish changed assets on wporg
+$ wp-release wporg source // publish changed assets on wporg
 ```
