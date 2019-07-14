@@ -35,7 +35,13 @@ $ wporg-release wporg assets // push new assets to wporg
 */
 
 (async () => {
-	const package = require( process.cwd() + '/package.json' );
+	const package_path = process.cwd() + '/package.json';
+	try {
+		const package = require( package_path );
+	} catch ( err ) {
+		console.error('ERROR'.red,`package.json does not exist`.white)
+		process.exit(1)
+	}
 	const steps = ['build','github','git','wporg','pack']
 	let has_step_args = false;
 	let dry = args.indexOf('dry') !== -1;
