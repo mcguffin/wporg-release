@@ -14,7 +14,7 @@ npm install -g github:mcguffin/wp-release
  Vulgo: Your repo remote must be something like `git@some-host:some-user/some-repo.git`  
  More help: [Github](https://help.github.com/en/articles/connecting-to-github-with-ssh), [Bitbucket](https://confluence.atlassian.com/bitbucketserver/ssh-access-keys-for-system-use-776639781.html)
 
-### Guthub
+### Github
  - an Access Token with `repo`-Scope enabled. [Create one](https://github.com/settings/tokens/new)
 
 #### Wordpress.org
@@ -73,6 +73,11 @@ $ wp-release pack
 
 ```bash
 $ wp-release minor dry // build minor update and simulate the releasing
+```
+
+Update trunk on wporg. Create release, if versions aren't equal
+```bash
+$ wp-release wporg
 ```
 
 Publish updated assets on wporg
