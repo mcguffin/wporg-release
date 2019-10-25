@@ -4,7 +4,7 @@ Release scripts for wordpress.org
 ## Install
 
 ```
-npm install -g github:mcguffin/wp-release
+npm install -g github:mcguffin/wporg-release
 ```
 
 ## Setup
