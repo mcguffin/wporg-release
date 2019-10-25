@@ -55,8 +55,8 @@ $ wporg-release wporg assets // push new assets to wporg
 			try {
 				await release[step].run( dry );
 			} catch (error) {
-				throw( error );
 				console.log('ERROR'.red)
+				console.error( error );
 //				!!error && console.log(error.red)
 				process.exit(1)
 			}
