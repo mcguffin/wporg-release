@@ -9,7 +9,8 @@
   },
   "scripts": {
     "postversion": "git push && git push --tags",
-    "rollback": "git reset --hard HEAD~ && git push origin +master"
+    "rollback": "git reset --hard HEAD~ && git push origin +master",
+    "test": "node test.js"
   },
   "repository": {
     "type": "git",
