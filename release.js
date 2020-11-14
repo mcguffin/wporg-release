@@ -43,7 +43,7 @@ $ wporg-release wporg assets // push new assets to wporg
 		console.error('ERROR'.red,`package.json does not exist`.white)
 		process.exit(1)
 	}
-	const steps = ['build','github','git','wporg','pack']
+	const steps = ['build','github','git','wporg','pack','post']
 	let has_step_args = false;
 	let dry = args.indexOf('dry') !== -1;
 
