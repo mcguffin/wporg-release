@@ -10,23 +10,23 @@ const dry = args.indexOf('dry') !== -1;
 const usage = `Usage \`wp-release [options]\`
 
 Options can be:
- - setup: Run configuration wizard
+ - \`setup\`: Run configuration wizard
 
 Or one of:
- - version identifier: patch|minor|major
- - Mode flag: dry (Don't do anything on remotes)
- - wporg-option: assets|source either release only assets or only sourcecode (default: none)
+ - version identifier: \`patch\`|\`minor\`|\`major\`
+ - Mode flag: \`dry\` (Don't do anything on remotes)
+ - wporg-option: \`assets\`|\`source\` either release only assets or only sourcecode (default: none)
 
 Or any of
- - Release step: build|git|github|wporg|pack (Default: wporg.steps in package.json)
+ - Release step: \`build\`|\`git\`|\`github\`|\`wporg\`|\`pack\` (Default: wporg.steps in package.json)
 
 
 Examples:
-$ wporg-release patch // Create patch update and release it everywhere
-$ wporg-release pack // Create a package zip to be submitted to wporg.
-$ wporg-release minor // release minor update
-$ wporg-release minor dry // build minor update, but keep changes local
-$ wporg-release wporg assets // push new assets to wporg
+$ wporg-release patch          # Create patch update and release it everywhere
+$ wporg-release pack           # Create an installation package zip
+$ wporg-release minor          # release minor update
+$ wporg-release minor dry      # build minor update, but keep changes local
+$ wporg-release wporg assets   # push new assets to wporg
 
 `;
 
