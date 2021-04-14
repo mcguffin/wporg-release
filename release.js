@@ -1,8 +1,10 @@
 #!/usr/bin/env node
-const colors =require('colors');
+const fs = require( 'fs' );
+const colors = require('colors');
 const release = require('./lib/release/index.js');
 const setup = require('./lib/setup.js');
 const { erase, cursor } = require('sisteransi');
+const exec = require('child_process');
 
 const [ , , ...args ] = process.argv;
 const dry = args.indexOf('dry') !== -1;
@@ -30,18 +32,18 @@ $ wporg-release wporg assets   # push new assets to wporg
 
 `;
 
-/*
 
-*/
 
 (async () => {
 	const package_path = process.cwd() + '/package.json';
 	let package;
 	try {
-		package = require( package_path );
+		package = JSON.parse(fs.readFileSync(package_path, {encoding:'utf-8'}));
+
 	} catch ( err ) {
 		console.error('ERROR'.red,`package.json does not exist`.white)
-		process.exit(1)
+		throw err
+		//process.exit(1)
 	}
 	const steps = ['build','github','git','wporg','pack','post']
 	let has_step_args = false;
