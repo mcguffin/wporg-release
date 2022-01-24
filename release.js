@@ -24,11 +24,11 @@ Or any of
 
 
 Examples:
-$ wporg-release patch          # Create patch update and release it everywhere
-$ wporg-release pack           # Create an installation package zip
-$ wporg-release minor          # release minor update
-$ wporg-release minor dry      # build minor update, but keep changes local
-$ wporg-release wporg assets   # push new assets to wporg
+$ wp-release patch          # Create patch update and release it everywhere
+$ wp-release pack           # Create an installation package zip
+$ wp-release minor          # release minor update
+$ wp-release minor dry      # build minor update, but keep changes local
+$ wp-release wporg assets   # push new assets to wporg
 
 `;
 
@@ -49,6 +49,13 @@ $ wporg-release wporg assets   # push new assets to wporg
 	let has_step_args = false;
 	let dry = args.indexOf('dry') !== -1;
 
+
+	// show some help
+	if ( ! args.length || args.indexOf('?') !== -1 || args.indexOf('--help') !== -1 ) {
+		console.log( usage )
+		process.exit(0)
+	}
+
 	const run_steps = async (...steps) => {
 		let i, step;
 		for ( i=0;i<steps.length;i++) {
@@ -63,12 +70,6 @@ $ wporg-release wporg assets   # push new assets to wporg
 				process.exit(1)
 			}
 		}
-	}
-
-	// show some help
-	if ( ! args.length || args.indexOf('?') !== -1 ) {
-		console.log( usage )
-		process.exit(0)
 	}
 
 
