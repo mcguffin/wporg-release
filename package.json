@@ -28,7 +28,7 @@
     "glob": "^7.1.4",
     "prompts": "^2.1.0",
     "semver": "^6.2.0",
-    "simple-git": "^2.37.0",
+    "simple-git": "^3.20.0",
     "sisteransi": "^1.0.2"
   }
 }
