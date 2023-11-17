@@ -20,12 +20,13 @@ Or one of:
  - wporg-option: \`assets\`|\`source\` either release only assets or only sourcecode (default: none)
 
 Or any of
- - Release step: \`build\`|\`git\`|\`github\`|\`wporg\`|\`pack\` (Default: wporg.steps in package.json)
+ - Release step: \`build\`|\`git\`|\`github\`|\`wporg\`|\`pack\`|\`betapack\` (Default: wporg.steps in package.json)
 
 
 Examples:
 $ wp-release patch          # Create patch update and release it everywhere
 $ wp-release pack           # Create an installation package zip
+$ wp-release betapack       # Create an installation package zip from HEAD
 $ wp-release minor          # release minor update
 $ wp-release minor dry      # build minor update, but keep changes local
 $ wp-release wporg assets   # push new assets to wporg
@@ -45,7 +46,7 @@ $ wp-release wporg assets   # push new assets to wporg
 		throw err
 		//process.exit(1)
 	}
-	const steps = ['build','github','git','wporg','pack','post']
+	const steps = ['build','github','git','wporg','pack','betapack','post']
 	let has_step_args = false;
 	let dry = args.indexOf('dry') !== -1;
 
@@ -87,21 +88,4 @@ $ wp-release wporg assets   # push new assets to wporg
 	} else {
 		run_steps( ...package.wporg.steps )
 	}
-	//
-	// if ( args.indexOf('build') !== -1 ) {
-	// 	console.log('## BUILD ##')
-	// 	await release.build( identifier )
-	// }
-	// if ( args.indexOf('github') !== -1 ) {
-	// 	console.log('## GITHUB ##')
-	// 	await release.github(dry)
-	// }
-	// if ( args.indexOf('git') !== -1 ) {
-	// 	console.log('## GIT ##')
-	// 	await release.git(dry)
-	// }
-	// if ( args.indexOf('wporg') !== -1 ) {
-	// 	console.log('## WPORG ##')
-	// 	await release.wporg(dry)
-	// }
 })();
