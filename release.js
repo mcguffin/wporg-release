@@ -20,7 +20,7 @@ Or one of:
  - wporg-option: \`assets\`|\`source\` either release only assets or only sourcecode (default: none)
 
 Or any of
- - Release step: \`build\`|\`git\`|\`github\`|\`wporg\`|\`pack\`|\`betapack\` (Default: wporg.steps in package.json)
+ - Release step: \`build\`|\`git\`|\`github\`|\`wporg\`|\`pack\`|\`betapack\`|\`test\` (Default: wporg.steps in package.json)
 
 
 Examples:
@@ -30,6 +30,7 @@ $ wp-release betapack       # Create an installation package zip from HEAD
 $ wp-release minor          # release minor update
 $ wp-release minor dry      # build minor update, but keep changes local
 $ wp-release wporg assets   # push new assets to wporg
+$ wp-release test           # run some test
 
 `;
 
@@ -46,7 +47,7 @@ $ wp-release wporg assets   # push new assets to wporg
 		throw err
 		//process.exit(1)
 	}
-	const steps = ['build','github','git','wporg','pack','betapack','post']
+	const steps = ['build','test','github','git','wporg','pack','betapack','post']
 	let has_step_args = false;
 	let dry = args.indexOf('dry') !== -1;
 
@@ -67,6 +68,7 @@ $ wp-release wporg assets   # push new assets to wporg
 			} catch (error) {
 				console.log('ERROR'.red)
 				console.error( error );
+				process.stdout.write( "\n" + cursor.show );
 //				!!error && console.log(error.red)
 				process.exit(1)
 			}
